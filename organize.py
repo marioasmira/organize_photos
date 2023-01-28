@@ -98,24 +98,27 @@ def main(argv):
                 else:
                     creation_date = extract_from_video(file_location)
 
+                # rename if there is metadata
                 file_name = (
                     creation_date.strftime("%Y%m%d_%H%M%S") + os.path.splitext(file)[1]
                 )
 
+                # new folders if there is metadata
                 top_new_path = str(creation_date.year) + "/"
                 if not os.path.exists(top_new_path):
                     os.mkdir(top_new_path)
-
                 new_path = top_new_path + str(creation_date.month).zfill(2) + "/"
                 if not os.path.exists(new_path):
                     os.mkdir(new_path)
 
+            # when there is no metadata, move to single folder
             except NoDatetimeFound:
                 print("File", file_location, "appears to have no metadata.")
                 new_path = "no_metadata/"
                 if not os.path.exists(new_path):
                     os.mkdir(new_path)
 
+            # move file to new location and name
             if os.path.isfile(file_location) and not os.path.isfile(
                 new_path + file_name
             ):
