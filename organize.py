@@ -100,7 +100,8 @@ def main(argv):
 
                 # rename if there is metadata
                 file_name = (
-                    creation_date.strftime("%Y%m%d_%H%M%S") + os.path.splitext(file)[1]
+                    creation_date.strftime("%Y-%m-%d_%H%M%S")
+                    + os.path.splitext(file)[1]
                 )
 
                 # new folders if there is metadata
