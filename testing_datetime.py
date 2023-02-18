@@ -2,7 +2,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 from datetime import datetime
 
-image = Image.open("test_rename/2014-04-20 05.56.45.jpg")
+image = Image.open("test_rename/2023-01-08_163153.jpg")
 
 exifdata = image.getexif().get_ifd(0x8769)
 
