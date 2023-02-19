@@ -1,6 +1,7 @@
 import os
 import sys
-import organize
+import exifhandling
+import filenames
 import filecmp
 
 
@@ -31,21 +32,9 @@ def main(argv):
                 file_name = file
                 file_location = os.path.join(subdir, file_name)
 
-                # extract the day and time a file was created
-                try:
-                    if file.endswith(".jpg") or file.endswith(".JPG"):
-                        creation_date = organize.extract_from_image(file_location)
-                    else:
-                        creation_date = organize.extract_from_video(file_location)
+                file_name, success = filenames.extract_date_time(file, file_location)
 
-                    # rename if there is metadata
-                    file_name = (
-                        creation_date.strftime("%Y-%m-%d_%H%M%S")
-                        + os.path.splitext(file)[1]
-                    )
-
-                # when there is no metadata, move to single folder
-                except organize.NoDatetimeFound:
+                if not success:
                     print(
                         "File", file_location, "appears to have no metadata. Skipping!"
                     )
