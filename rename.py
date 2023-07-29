@@ -1,6 +1,5 @@
 import os
 import sys
-import exifhandling
 import filenames
 import filecmp
 
@@ -27,8 +26,8 @@ def main(argv):
                 or file.endswith(".mp4")
                 or file.endswith(".MP4")
                 or file.endswith(".3gp")
+                or file.endswith(".NEF")
             ):
-
                 file_name = file
                 file_location = os.path.join(subdir, file_name)
 

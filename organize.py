@@ -25,8 +25,8 @@ def main(argv):
             or file.endswith(".mp4")
             or file.endswith(".MP4")
             or file.endswith(".3gp")
+            or file.endswith(".NEF")
         ):
-
             file_name = file
             file_location = folder + file_name
 
